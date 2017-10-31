@@ -17,6 +17,34 @@ function initMap() {
         center: Atlanta
     });
 
+    let input = document.getElementById('pac-input');
+    let searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    map.addListener('bounds_changed', function() {
+        searchBox.setBounds(map.getBounds());
+    });
+
+    searchBox.addListener('places_changed', function() {
+        let places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+            return;
+        }
+
+        // For each place, get the icon, name and location.
+        let bounds = new google.maps.LatLngBounds();
+        places.forEach(function(place) {
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+        });
+        map.fitBounds(bounds);
+    });
+
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
