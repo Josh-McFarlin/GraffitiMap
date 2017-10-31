@@ -95,3 +95,14 @@ function placeMarker(map, name, loc) {
         });
     });
 }
+
+
+window.addEventListener('load', function() {
+    initApp()
+});
+
+
+initApp = function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+    })
+};

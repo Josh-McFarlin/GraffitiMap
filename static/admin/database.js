@@ -35,8 +35,8 @@ firebase.database().ref('suggested/').on('value', function (snapshot) {
                 content += '<td class="text-left">' + val.address + '</td>';
                 content += '<td class="text-left">' + val.desc + '</td>';
                 content += '<td class="text-left"><img src="' + val.images + '"></td>';
-                content += '<td class="text-left"><button type="button" onclick="approveSuggestion(' + "'" + Object.keys(snapshot.val())[0] + "'" + ')">Approve</button></td>';
-                content += '<td class="text-left"><button type="button" onclick="deleteSuggestion(' + "'" + Object.keys(snapshot.val())[0] + "'" + ')">Delete</button></td>';
+                content += '<td class="text-left"><button type="button" onclick="approveSuggestion(' + "'" + Object.keys(snapshot.val())[count] + "'" + ')">Approve</button></td>';
+                content += '<td class="text-left"><button type="button" onclick="deleteSuggestion(' + "'" + Object.keys(snapshot.val())[count] + "'" + ')">Delete</button></td>';
                 content += '</tr>';
             }
             count++;
@@ -88,3 +88,14 @@ function writeLocation(name, address, description, images) {
         }
     });
 }
+
+
+window.addEventListener('load', function() {
+    initApp()
+});
+
+
+initApp = function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+    })
+};

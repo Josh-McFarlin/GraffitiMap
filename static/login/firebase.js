@@ -12,11 +12,26 @@ let uiConfig = {
     signInSuccessUrl: 'admin.html',
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
     tosUrl: 'tos.html'
 };
 
 let ui = new firebaseui.auth.AuthUI(firebase.auth());
-ui.start('#firebaseui-auth-container', uiConfig);
+
+
+window.addEventListener('load', function() {
+    initApp()
+});
+
+
+initApp = function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            window.location.href="admin.html"
+        } else {
+            ui.start('#firebaseui-auth-container', uiConfig);
+        }
+    });
+};

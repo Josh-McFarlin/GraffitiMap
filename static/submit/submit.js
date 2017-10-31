@@ -54,3 +54,14 @@ function writeSuggestion(name, address, description, legality, image) {
         images: image
     });
 }
+
+
+window.addEventListener('load', function() {
+    initApp()
+});
+
+
+initApp = function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+    })
+};
