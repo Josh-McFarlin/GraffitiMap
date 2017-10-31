@@ -13,7 +13,7 @@ function initMap() {
     let Atlanta = {lat: 33.7490, lng: -84.3880};
 
     let map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 10,
         center: Atlanta
     });
 
@@ -60,11 +60,11 @@ function initMap() {
             });
 
             map.setCenter(pos);
-            map.setZoom(11);
+            map.setZoom(12);
         });
     } else {
         map.setCenter(Atlanta);
-        map.setZoom(11);
+        map.setZoom(12);
     }
 
     let locationsRef = firebase.database().ref('locations/');

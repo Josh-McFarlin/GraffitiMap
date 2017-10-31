@@ -1,3 +1,35 @@
 input {
     width: 25vw;
 }
+
+@media (orientation:portrait) {
+    input {
+        height: 3.5vh !important;
+        font-size: 2vh !important;
+        border: black;
+    }
+
+    .control-label {
+        font-size: 2vh !important;
+    }
+
+    .col-md-4 {
+        width: calc(100vw - 5px) !important;
+        max-width: none !important;
+    }
+
+    h1 {
+        font-size: 5vh !important;
+        text-align: center;
+    }
+
+    input[type="button"] {
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+    }
+
+    .alignButton {
+        text-align: center;
+    }
+}

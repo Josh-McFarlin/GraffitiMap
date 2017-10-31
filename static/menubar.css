@@ -10,19 +10,19 @@ ul.menubar {
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    height: 4vh;
+    height: 50px;
 }
 
 li.menubar {
     float: left;
-    height: 4vh;
+    height: 50px;
 }
 
 li.menubar a {
     display: block;
     color: white;
     text-align: center;
-    padding: 12px 16px;
+    padding: 14px 16px;
     text-decoration: none;
 }
 
@@ -32,4 +32,19 @@ li.menubar a:hover {
 
 li.menubar a.active {
     background-color: #4CAF50;
+}
+
+@media (orientation:portrait) {
+    ul.menubar {
+        height: 75px;
+    }
+
+    li.menubar {
+        height: 75px;
+    }
+
+    li.menubar a {
+        padding: 14px 50px;
+        font-size: 35px;
+    }
 }
