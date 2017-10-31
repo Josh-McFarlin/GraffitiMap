@@ -1,0 +1,5 @@
+.gitignore
+.firebaserc
+.idea
+firebase-debug.log
+firebase.json
