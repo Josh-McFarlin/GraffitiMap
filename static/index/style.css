@@ -67,7 +67,7 @@ body {
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.75vh;
+    font-size: calc(16px + 1vh);
     font-weight: 300;
     margin-left: 12px;
     padding: 0 11px 0 13px;
