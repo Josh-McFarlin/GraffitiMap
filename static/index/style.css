@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 96vh;
+    width: 100vw;
+}
+
+.mapImg {
+    max-width: 320px;
+    max-height: 125px;
+}
+
+.centerIW {
+    text-align: center;
+}
+
+.iw-title {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #48b5e9;
+    color: white;
+    margin: 0;
+    border-radius: 2px 2px 0 0;
+}

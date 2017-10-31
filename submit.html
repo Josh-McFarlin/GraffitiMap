@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Submit Location</title>
+        <link rel="stylesheet" href="static/menubar.css">
+        <link rel="stylesheet" href="static/submit/form.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/favicons/manifest.json">
+        <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/favicons/favicon.ico">
+        <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
+    </head>
+    <body>
+        <ul class="menubar">
+            <li class="menubar"><a href="index.html" class="menubar">Map</a></li>
+            <li class="menubar"><a href="https://graffitiatl.weebly.com/" class="menubar">Website</a></li>
+            <li class="menubar"><a href="submit.html" class="menubar active">Submit A Location</a></li>
+            <li class="menubar"><a href="login.html" class="menubar">Login</a></li>
+        </ul>
+        <h1>Submit A Location</h1>
+
+        <form id="toClear" class="form-horizontal" name="subForm" onsubmit="validateForm()" method="post">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Add Location</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="name">Name (Required)</label>
+                    <div class="col-md-4">
+                        <input id="name" name="name" type="text" placeholder="A Grafitti Wall" class="form-control input-md" required="">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="address">Address (Required)</label>
+                    <div class="col-md-4">
+                        <input id="address" name="address" type="text" placeholder="1 Main Street, City, State" class="form-control input-md" required="">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="desc">Description (Optional)</label>
+                    <div class="col-md-4">
+                        <input id="desc" name="desc" type="text" placeholder="A great grafitti wall open to everyone" class="form-control input-md">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="legality">Information About Location Legality (Optional)</label>
+                    <div class="col-md-4">
+                        <input id="legality" name="legality" type="text" placeholder="Contact email, news articles, links, etc" class="form-control input-md">
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="imglink">Image Link (Optional)</label>
+                    <div class="col-md-4">
+                        <input id="imglink" name="imglink" type="text" placeholder="example.com/image.png" class="form-control input-md">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <input type="button" value="Submit" onclick="validateForm()">
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+        <script src="static/submit/submit.js"></script>
+    </body>
+</html>
