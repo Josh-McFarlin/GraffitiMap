@@ -25,64 +25,65 @@
             <li class="menubar"><a href="submit.html" class="menubar active">Submit A Location</a></li>
             <li class="menubar"><a href="login.html" class="menubar">Login</a></li>
         </ul>
-        <h1>Submit A Location</h1>
 
-        <form id="toClear" class="form-horizontal" name="subForm" onsubmit="validateForm()" method="post">
-            <fieldset>
+        <div style="padding: 5px;">
+            <h1>Submit A Location</h1>
+            <form id="toClear" class="form-horizontal" name="subForm" onsubmit="validateForm()" method="post">
+                <fieldset>
 
-                <!-- Form Name -->
-                <legend>Add Location</legend>
+                    <!-- Form Name -->
+                    <legend>Add Location</legend>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="name">Name (Required)</label>
-                    <div class="col-md-4">
-                        <input id="name" name="name" type="text" placeholder="A Grafitti Wall" class="form-control input-md" required="">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="name">Name (Required)</label>
+                        <div class="col-md-4">
+                            <input id="name" name="name" type="text" placeholder="A Grafitti Wall" class="form-control input-md" required="">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="address">Address (Required)</label>
-                    <div class="col-md-4">
-                        <input id="address" name="address" type="text" placeholder="1 Main Street, City, State" class="form-control input-md" required="">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="address">Address (Required)</label>
+                        <div class="col-md-4">
+                            <input id="address" name="address" type="text" placeholder="1 Main Street, City, State" class="form-control input-md" required="">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="desc">Description (Optional)</label>
-                    <div class="col-md-4">
-                        <input id="desc" name="desc" type="text" placeholder="A great grafitti wall open to everyone" class="form-control input-md">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="desc">Description (Optional)</label>
+                        <div class="col-md-4">
+                            <input id="desc" name="desc" type="text" placeholder="A great grafitti wall open to everyone" class="form-control input-md">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="legality">Information About Location Legality (Optional)</label>
-                    <div class="col-md-4">
-                        <input id="legality" name="legality" type="text" placeholder="Contact email, news articles, links, etc" class="form-control input-md">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="legality">Information About Location Legality (Optional)</label>
+                        <div class="col-md-4">
+                            <input id="legality" name="legality" type="text" placeholder="Contact email, news articles, links, etc" class="form-control input-md">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="imglink">Image Link (Optional)</label>
-                    <div class="col-md-4">
-                        <input id="imglink" name="imglink" type="text" placeholder="example.com/image.png" class="form-control input-md">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="imglink">Image Link (Optional)</label>
+                        <div class="col-md-4">
+                            <input id="imglink" name="imglink" type="text" placeholder="example.com/image.png" class="form-control input-md">
+                        </div>
                     </div>
-                </div>
 
-                <br>
+                    <br>
 
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <input type="button" value="Submit" onclick="validateForm()">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <input type="button" value="Submit" onclick="validateForm()">
+                        </div>
                     </div>
-                </div>
-
-            </fieldset>
-        </form>
+                </fieldset>
+            </form>
+        </div>
         <script src="static/submit/submit.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
