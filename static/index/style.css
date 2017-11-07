@@ -16,6 +16,16 @@ body {
     }
 }
 
+.gm-style-iw {
+    width: fit-content !important;
+    top: 15px !important;
+    left: 0px !important;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+    padding: 4px;
+    border-radius: 4px;
+}
+
 .mapImg {
     max-width: 320px;
     max-height: 125px;
@@ -30,10 +40,50 @@ body {
     font-size: 22px;
     font-weight: 400;
     padding: 10px;
-    background-color: #48b5e9;
+    background-color: #4CAF50;
     color: white;
     margin: 0;
     border-radius: 2px 2px 0 0;
+}
+
+.opts {
+    width: 100%;
+    border: solid #656565 1px;
+}
+
+.red {
+    color: red !important;
+}
+
+.green {
+    color: #4CAF50 !important;
+}
+
+.iw-avail {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #efefef;
+    color: white;
+    margin: 0;
+    white-space: pre;
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+}
+
+.iw-opts {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #333333;
+    color: white;
+    margin: 0;
+    white-space: pre;
+    display: inline-block;
+    width: 85%;
 }
 
 .pac-card {

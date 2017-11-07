@@ -13,11 +13,28 @@ function validateForm() {
     let name = document.forms["subForm"]["name"].value.trim();
     let address = document.forms["subForm"]["address"].value.replace(/(?<=[a-zA-z  ])\d{5}(?:-\d{4})?/g, "").trim();
     let desc = document.forms["subForm"]["desc"].value.trim();
-    let legality = document.forms["subForm"]["legality"].value.trim();
     let imglink = document.forms["subForm"]["imglink"].value.trim();
+    let loctype = document.forms["subForm"]["legalradio"].value.trim();
+    let legalinfo = document.forms["subForm"]["legality"].value.trim();
 
-    if (!name && !address && !desc && !legality && !imglink) {
-        $.notify("Please enter information into the forms!");
+    if (loctype === "Existing Graffiti") {
+        legalinfo = "N/A";
+    }
+
+    if (!(name && address && loctype)) {
+        let pos = "right";
+        if (screen.orientation.type.includes("portrait")) {
+            pos = "top right";
+        }
+        if (!name) {
+            $(".fName").notify("Required", { position:pos, className:"error"});
+        }
+        if (!address) {
+            $(".fAddress").notify("Required", { position:pos, className:"error"});
+        }
+        if (!loctype) {
+            $(".fRadio").notify("Required", { position:pos, className:"error"});
+        }
     } else {
         firebase.database().ref('info/').orderByChild('address').equalTo(address).once("value", function (infoSnapshot) {
             if (infoSnapshot.val()) {
@@ -39,10 +56,14 @@ function validateForm() {
                     if (sugSnapshot.val()) {
                         $.notify("This location has already been submitted for review!");
                         document.getElementById("toClear").reset();
+                        document.getElementById("legalinfo").style.display = "none";
                     } else {
-                        writeSuggestion(name, address, desc, legality, imglink);
+                        if (name !== "testnofill") {
+                            writeSuggestion(name, address, desc, imglink, loctype, legalinfo);
+                        }
                         $.notify("Your submission has been submitted for review!", "success");
                         document.getElementById("toClear").reset();
+                        document.getElementById("legalinfo").style.display = "none";
                     }
                 });
             }
@@ -51,12 +72,26 @@ function validateForm() {
 }
 
 
-function writeSuggestion(name, address, description, legality, image) {
+$(document).ready(function(){
+    $('input[type=radio]').click(function(){
+        if (this.id === "legalradio") {
+            if (this.value === "Legal Location") {
+                document.getElementById("legalinfo").style.display = "inherit";
+            } else {
+                document.getElementById("legalinfo").style.display = "none";
+            }
+        }
+    });
+});
+
+
+function writeSuggestion(name, address, description, image, loctype, legalinfo) {
     firebase.database().ref('suggested/' + name).set({
-        address: address,
-        desc: description,
-        legality: legality,
-        images: image
+        addr: address,
+        description: description,
+        image: image,
+        loctype: loctype,
+        legalinfo: legalinfo
     });
 }
 
@@ -67,6 +102,5 @@ window.addEventListener('load', function() {
 
 
 initApp = function() {
-    firebase.auth().onAuthStateChanged(function(user) {
-    })
+    firebase.auth().onAuthStateChanged(function(user) {})
 };

@@ -1,8 +1,25 @@
 input {
-    width: 25vw;
+    width: 100%;
+}
+
+.form-horizontal {
+    width: 50vw;
+    margin: auto;
+}
+
+.col-md-4 {
+    max-width: none !important;
+}
+
+label {
+    font-size: 25px;
 }
 
 @media (orientation:portrait) {
+    .form-horizontal {
+        width: auto;
+    }
+
     input {
         height: 3.5vh !important;
         font-size: 2vh !important;
@@ -15,7 +32,6 @@ input {
 
     .col-md-4 {
         width: calc(100vw - 5px) !important;
-        max-width: none !important;
     }
 
     h1 {
@@ -25,11 +41,63 @@ input {
 
     input[type="button"] {
         border-radius: 4px !important;
-        border-style: solid !important;
-        border-width: 1px !important;
+        border: 1px solid !important;
     }
 
     .alignButton {
         text-align: center;
     }
+}
+
+#legalinfo {
+    display: none;
+}
+
+.inline-radio {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #b6b6b6;
+    margin: 14px;
+}
+.inline-radio div {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.inline-radio input {
+    width: 100%;
+    height: 60px;
+    opacity: 0;
+}
+.inline-radio label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #b6b6b6;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    pointer-events: none;
+    border-right: 1px solid #b6b6b6;
+}
+.inline-radio div:last-child label {
+    border-right: 0;
+}
+.inline-radio input:checked + label {
+    background: #4CAF50;
+    font-weight: 500;
+    color: #fff;
 }

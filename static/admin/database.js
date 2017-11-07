@@ -29,12 +29,14 @@ firebase.database().ref('suggested/').on('value', function (snapshot) {
 
         snapshot.forEach(function(data) {
             if (!names.includes(Object.keys(snapshot.val())[count])) {
-                let val = data.val();
-                content += '<tr>';
-                content += '<td class="text-left">' + Object.keys(snapshot.val())[count] +'</td>';
-                content += '<td class="text-left">' + val.address + '</td>';
-                content += '<td class="text-left">' + val.desc + '</td>';
-                content += '<td class="text-left"><img src="' + val.images + '"></td>';
+                let info = data.val();
+                content += '<tr onclick="expand(this)">';
+                content += '<td class="text-left crop">' + Object.keys(snapshot.val())[count] +'</td>';
+                content += '<td class="text-left crop" data-text="'+ info.addr +'" data-full="no">' + info.addr + '</td>';
+                content += '<td class="text-left crop" data-text="'+ info.description +'">' + info.description + '</td>';
+                content += '<td class="text-left crop" data-text="'+ info.loctype +'">' + info.loctype + '</td>';
+                content += '<td class="text-left crop" data-text="'+ info.legalinfo +'">' + info.legalinfo + '</td>';
+                content += '<td class="text-left"><img src="' + info.image + '"></td>';
                 content += '<td class="text-left"><button type="button" onclick="approveSuggestion(' + "'" + Object.keys(snapshot.val())[count] + "'" + ')">Approve</button></td>';
                 content += '<td class="text-left"><button type="button" onclick="deleteSuggestion(' + "'" + Object.keys(snapshot.val())[count] + "'" + ')">Delete</button></td>';
                 content += '</tr>';
@@ -42,8 +44,43 @@ firebase.database().ref('suggested/').on('value', function (snapshot) {
             count++;
         });
         $('#ex-table').append(content);
+
+        var croppable = document.getElementsByClassName("crop");
+        for (let index = 0; index < croppable.length; index++) {
+            if (croppable[index].innerHTML.length > 50) {
+                croppable[index].setAttribute("title", "Click To Expand");
+                croppable[index].innerHTML = croppable[index].innerHTML.substring(0, 50) + "...";
+            }
+        }
     }
 });
+
+
+function expand(tr) {
+    let chld = tr.children;
+    if (chld.length > 0) {
+        let full = chld[1].getAttribute("data-full");
+        if (full === "no") {
+            chld[1].setAttribute("data-full", "yes");
+            for (let index = 0; index < chld.length; index++) {
+                if (chld[index].hasAttribute("data-text")) {
+                    let text = chld[index].getAttribute("data-text");
+                    chld[index].innerHTML = text;
+                }
+            }
+        } else {
+            chld[1].setAttribute("data-full", "no");
+            for (let index = 0; index < chld.length; index++) {
+                if (chld[index].hasAttribute("data-text")) {
+                    if (chld[index].innerHTML.length > 50) {
+                        chld[index].innerHTML = chld[index].innerHTML.substring(0, 50) + "...";
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
 function deleteSuggestion(tag) {
@@ -58,30 +95,39 @@ function approveSuggestion(tag) {
     firebase.database().ref('suggested/' + tag + '/').on('value', function (snapshot) {
         let info = snapshot.val();
         let name = tag;
-        let address = info.address;
-        let description = info.desc;
-        let images = info.images;
-        writeLocation(name, address, description, images);
+        let address = info.addr;
+        let description = info.description;
+        let image = info.image;
+        let loctype = info.loctype;
+        writeLocation(name, address, description, image, loctype);
         snapshot.ref.remove();
         location.reload(true);
     });
 }
 
 
-function writeLocation(name, address, description, images) {
+function writeLocation(name, address, description, image, loctype) {
     geocoder = new google.maps.Geocoder();
     geocoder.geocode({'address': address}, function(results, status) {
         if (status === 'OK') {
             let pos = results[0].geometry.location;
+            let label;
+            if (loctype === "Legal Location") {
+                label = "M";
+            } else {
+                label = "V";
+            }
             firebase.database().ref('locations/' + name).set({
                 lat: Number(pos.lat()),
-                lng: Number(pos.lng())
+                lng: Number(pos.lng()),
+                type: label
             });
 
             firebase.database().ref('info/' + name).set({
                 address: address,
                 desc: description,
-                images: images
+                image: image,
+                loctype: loctype
             });
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -96,6 +142,5 @@ window.addEventListener('load', function() {
 
 
 initApp = function() {
-    firebase.auth().onAuthStateChanged(function(user) {
-    })
+    firebase.auth().onAuthStateChanged(function(user) {})
 };

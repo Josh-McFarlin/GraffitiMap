@@ -27,47 +27,55 @@
         </ul>
 
         <div style="padding: 5px;">
-            <h1>Submit A Location</h1>
+            <h1 style="text-align: center;">Submit A Location</h1>
             <form id="toClear" class="form-horizontal" name="subForm" onsubmit="validateForm()" method="post">
                 <fieldset>
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="name">Name (Required)</label>
+                        <label class="col-md-4 control-label" for="name">Name</label>
                         <div class="col-md-4">
-                            <input id="name" name="name" type="text" placeholder="A Grafitti Wall" class="form-control input-md" required="">
+                            <input id="name" name="name" placeholder="A Grafitti Wall" class="form-control input-md fName" required>
                         </div>
                     </div>
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="address">Address (Required)</label>
+                        <label class="col-md-4 control-label" for="address">Address</label>
                         <div class="col-md-4">
-                            <input id="address" name="address" type="text" placeholder="1 Main Street, City, State" class="form-control input-md" required="">
+                            <input id="address" name="address" placeholder="1 Main Street, City, State" class="form-control input-md fAddress" required>
                         </div>
                     </div>
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="desc">Description (Optional)</label>
+                        <label class="col-md-4 control-label" for="desc">Description</label>
                         <div class="col-md-4">
-                            <input id="desc" name="desc" type="text" placeholder="A great grafitti wall open to everyone" class="form-control input-md">
+                            <input id="desc" name="desc" placeholder="A great grafitti wall open to everyone." class="form-control input-md">
                         </div>
                     </div>
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="legality">Information About Location Legality (Optional)</label>
+                        <label class="col-md-4 control-label" for="imglink">Image Link</label>
                         <div class="col-md-4">
-                            <input id="legality" name="legality" type="text" placeholder="Contact email, news articles, links, etc" class="form-control input-md">
+                            <input id="imglink" name="imglink" placeholder="example.com/image.png" class="form-control input-md">
                         </div>
                     </div>
 
-                    <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="imglink">Image Link (Optional)</label>
+                        <label class="col-md-4 control-label" for="desc">Location Type</label>
+                        <group class="inline-radio fRadio">
+                            <div><input type="radio" id="legalradio" name="member" value="Existing Graffiti" required><label>Existing Graffiti</label></div>
+                            <div><input type="radio" id="legalradio" name="member" value="Legal Location"><label>Legal Location</label></div>
+                        </group>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group" id="legalinfo">
+                        <label class="col-md-4 control-label" for="legality">Information About Location Legality</label>
                         <div class="col-md-4">
-                            <input id="imglink" name="imglink" type="text" placeholder="example.com/image.png" class="form-control input-md">
+                            <input id="legality" name="legality" placeholder="Contact email, news articles, links, etc" class="form-control input-md">
                         </div>
                     </div>
 
