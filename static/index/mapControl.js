@@ -9,7 +9,7 @@ let config = {
 firebase.initializeApp(config);
 
 
-var infowindow;
+let infowindow;
 function initMap() {
     let Atlanta = {lat: 33.7490, lng: -84.3880};
 

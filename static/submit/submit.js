@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 function validateForm() {
     let name = document.forms["subForm"]["name"].value.trim();
-    let address = document.forms["subForm"]["address"].value.replace(/(?<=[a-zA-z  ])\d{5}(?:-\d{4})?/g, "").trim();
+    let address = document.forms["subForm"]["address"].value.replace(/\d{5}(?:-\d{4})?(?![a-zA-z ])/g, "").trim();
     let desc = document.forms["subForm"]["desc"].value.trim();
     let imglink = document.forms["subForm"]["imglink"].value.trim();
     let loctype = document.forms["subForm"]["legalradio"].value.trim();
@@ -72,8 +72,8 @@ function validateForm() {
 }
 
 
-$(document).ready(function(){
-    $('input[type=radio]').click(function(){
+$(document).ready(function() {
+    $('input[type=radio]').click(function() {
         if (this.id === "legalradio") {
             if (this.value === "Legal Location") {
                 document.getElementById("legalinfo").style.display = "inherit";
@@ -81,6 +81,10 @@ $(document).ready(function(){
                 document.getElementById("legalinfo").style.display = "none";
             }
         }
+    });
+
+    $("#subButton").on('click touchstart', function() {
+        validateForm();
     });
 });
 

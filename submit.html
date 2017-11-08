@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="static/menubar.css">
         <link rel="stylesheet" href="static/submit/form.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
@@ -26,64 +27,51 @@
             <li class="menubar"><a href="login.html" class="menubar">Login</a></li>
         </ul>
 
-        <div style="padding: 5px;">
+        <div class="form">
             <h1 style="text-align: center;">Submit A Location</h1>
-            <form id="toClear" class="form-horizontal" name="subForm" onsubmit="validateForm()" method="post">
+            <form id="toClear" class="form-horizontal" name="subForm" method="post">
                 <fieldset>
-
-                    <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="name">Name</label>
                         <div class="col-md-4">
-                            <input id="name" name="name" placeholder="A Grafitti Wall" class="form-control input-md fName" required>
+                            <input id="name" name="name" placeholder="A Grafitti Wall" class="form-control input-md fName">
                         </div>
                     </div>
-
-                    <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="address">Address</label>
                         <div class="col-md-4">
-                            <input id="address" name="address" placeholder="1 Main Street, City, State" class="form-control input-md fAddress" required>
+                            <input id="address" name="address" placeholder="1 Main Street, City, State" class="form-control input-md fAddress">
                         </div>
                     </div>
-
-                    <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="desc">Description</label>
                         <div class="col-md-4">
                             <input id="desc" name="desc" placeholder="A great grafitti wall open to everyone." class="form-control input-md">
                         </div>
                     </div>
-
-                    <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="imglink">Image Link</label>
                         <div class="col-md-4">
                             <input id="imglink" name="imglink" placeholder="example.com/image.png" class="form-control input-md">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="desc">Location Type</label>
-                        <group class="inline-radio fRadio">
-                            <div><input type="radio" id="legalradio" name="member" value="Existing Graffiti" required><label>Existing Graffiti</label></div>
+                        <div class="inline-radio fRadio">
+                            <div><input type="radio" id="legalradio" name="member" value="Existing Graffiti"><label>Existing Graffiti</label></div>
                             <div><input type="radio" id="legalradio" name="member" value="Legal Location"><label>Legal Location</label></div>
-                        </group>
+                        </div>
                     </div>
-
-                    <!-- Text input-->
                     <div class="form-group" id="legalinfo">
                         <label class="col-md-4 control-label" for="legality">Information About Location Legality</label>
                         <div class="col-md-4">
                             <input id="legality" name="legality" placeholder="Contact email, news articles, links, etc" class="form-control input-md">
                         </div>
                     </div>
-
                     <br>
-
                     <div class="form-group">
                         <div class="col-md-4 alignButton">
-                            <input type="button" value="Submit" onclick="validateForm()">
+                            <input type="button" value="Submit" id="subButton" onclick="return false;">
                         </div>
                     </div>
                 </fieldset>
@@ -91,6 +79,5 @@
         </div>
         <script src="static/submit/submit.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
     </body>
 </html>

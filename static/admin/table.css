@@ -84,11 +84,6 @@ td {
     word-wrap: break-word;
 }
 
-.rfsfssf {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 td:last-child {
     border-right: 0;
 }

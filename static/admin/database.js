@@ -45,7 +45,7 @@ firebase.database().ref('suggested/').on('value', function (snapshot) {
         });
         $('#ex-table').append(content);
 
-        var croppable = document.getElementsByClassName("crop");
+        let croppable = document.getElementsByClassName("crop");
         for (let index = 0; index < croppable.length; index++) {
             if (croppable[index].innerHTML.length > 50) {
                 croppable[index].setAttribute("title", "Click To Expand");
@@ -55,7 +55,6 @@ firebase.database().ref('suggested/').on('value', function (snapshot) {
     }
 });
 
-
 function expand(tr) {
     let chld = tr.children;
     if (chld.length > 0) {
@@ -64,8 +63,7 @@ function expand(tr) {
             chld[1].setAttribute("data-full", "yes");
             for (let index = 0; index < chld.length; index++) {
                 if (chld[index].hasAttribute("data-text")) {
-                    let text = chld[index].getAttribute("data-text");
-                    chld[index].innerHTML = text;
+                    chld[index].innerHTML = chld[index].getAttribute("data-text");
                 }
             }
         } else {
@@ -81,15 +79,12 @@ function expand(tr) {
     }
 }
 
-
-
 function deleteSuggestion(tag) {
     firebase.database().ref('suggested/' + tag + '/').on('value', function (snapshot) {
         snapshot.ref.remove();
         location.reload(true);
     });
 }
-
 
 function approveSuggestion(tag) {
     firebase.database().ref('suggested/' + tag + '/').on('value', function (snapshot) {
@@ -104,7 +99,6 @@ function approveSuggestion(tag) {
         location.reload(true);
     });
 }
-
 
 function writeLocation(name, address, description, image, loctype) {
     geocoder = new google.maps.Geocoder();
@@ -135,11 +129,9 @@ function writeLocation(name, address, description, image, loctype) {
     });
 }
 
-
 window.addEventListener('load', function() {
     initApp()
 });
-
 
 initApp = function() {
     firebase.auth().onAuthStateChanged(function(user) {})
