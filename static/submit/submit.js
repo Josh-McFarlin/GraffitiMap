@@ -27,13 +27,13 @@ function validateForm() {
             pos = "top right";
         }
         if (!name) {
-            $(".fName").notify("Required", { position:pos, className:"error"});
+            $(".fName").notify("Required", {position:pos, className:"error"});
         }
         if (!address) {
-            $(".fAddress").notify("Required", { position:pos, className:"error"});
+            $(".fAddress").notify("Required", {position:pos, className:"error"});
         }
         if (!loctype) {
-            $(".fRadio").notify("Required", { position:pos, className:"error"});
+            $(".fRadio").notify("Required", {position:pos, className:"error"});
         }
     } else {
         firebase.database().ref('info/').orderByChild('address').equalTo(address).once("value", function (infoSnapshot) {

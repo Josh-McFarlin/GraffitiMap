@@ -46,7 +46,8 @@ firebase.database().ref('suggested/').on('value', function (snapshot) {
         $('#ex-table').append(content);
 
         let croppable = document.getElementsByClassName("crop");
-        for (let index = 0; index < croppable.length; index++) {
+        let index;
+        for (index = 0; index < croppable.length; index++) {
             if (croppable[index].innerHTML.length > 50) {
                 croppable[index].setAttribute("title", "Click To Expand");
                 croppable[index].innerHTML = croppable[index].innerHTML.substring(0, 50) + "...";
@@ -61,14 +62,16 @@ function expand(tr) {
         let full = chld[1].getAttribute("data-full");
         if (full === "no") {
             chld[1].setAttribute("data-full", "yes");
-            for (let index = 0; index < chld.length; index++) {
+            let index;
+            for (index = 0; index < chld.length; index++) {
                 if (chld[index].hasAttribute("data-text")) {
                     chld[index].innerHTML = chld[index].getAttribute("data-text");
                 }
             }
         } else {
             chld[1].setAttribute("data-full", "no");
-            for (let index = 0; index < chld.length; index++) {
+            let index;
+            for (index = 0; index < chld.length; index++) {
                 if (chld[index].hasAttribute("data-text")) {
                     if (chld[index].innerHTML.length > 50) {
                         chld[index].innerHTML = chld[index].innerHTML.substring(0, 50) + "...";
@@ -80,10 +83,8 @@ function expand(tr) {
 }
 
 function deleteSuggestion(tag) {
-    firebase.database().ref('suggested/' + tag + '/').on('value', function (snapshot) {
-        snapshot.ref.remove();
-        location.reload(true);
-    });
+    firebase.database().ref('suggested/').child(tag).remove();
+    location.reload();
 }
 
 function approveSuggestion(tag) {
@@ -95,8 +96,7 @@ function approveSuggestion(tag) {
         let image = info.image;
         let loctype = info.loctype;
         writeLocation(name, address, description, image, loctype);
-        snapshot.ref.remove();
-        location.reload(true);
+        deleteSuggestion(tag);
     });
 }
 
@@ -130,9 +130,9 @@ function writeLocation(name, address, description, image, loctype) {
 }
 
 window.addEventListener('load', function() {
-    initApp()
+    initApp();
 });
 
 initApp = function() {
-    firebase.auth().onAuthStateChanged(function(user) {})
+    firebase.auth().onAuthStateChanged(function(user) {});
 };

@@ -24,12 +24,12 @@
             <li class="menubar"><a href="index.html" class="menubar">Map</a></li>
             <li class="menubar"><a href="https://graffitiatl.weebly.com/" class="menubar">Website</a></li>
             <li class="menubar"><a href="submit.html" class="menubar active">Submit A Location</a></li>
-            <li class="menubar"><a href="login.html" class="menubar">Login</a></li>
+            <li class="menubar"><a href="login.html" class="menubar">Admin</a></li>
         </ul>
 
         <div class="form">
             <h1 style="text-align: center;">Submit A Location</h1>
-            <form id="toClear" class="form-horizontal" name="subForm" method="post">
+            <form id="toClear" class="form-horizontal" name="subForm" method="post" onsubmit="validateForm()">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="name">Name</label>

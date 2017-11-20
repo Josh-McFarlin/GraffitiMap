@@ -78,15 +78,15 @@ function initMap() {
     });
 
     google.maps.event.addListener(infowindow, 'domready', function() {
-        var iwOuter = $('.gm-style-iw');
-        var bg = iwOuter.prev();
+        let iwOuter = $('.gm-style-iw');
+        let bg = iwOuter.prev();
 
         bg.children(':nth-child(2)').css({'display' : 'none'});
         bg.children(':nth-child(4)').css({'display' : 'none'});
 
         let closeBttn = iwOuter.next();
 
-        closeBttn.css({opacity: '1', right: '53px', top: '23px'});
+        closeBttn.css({opacity: '1', left: 'calc(100% - 20px)', top: '23px'});
 
         closeBttn.mouseout(function(){
             $(this).css({opacity: '1'});
@@ -110,13 +110,13 @@ function placeMarker(map, name, loc) {
         firebase.database().ref('info/' + this.getTitle()).on('value', function (snapshot) {
             let text = "<div class='centerIW'><div class='iw-title'>" + name + "</div><h5>" + snapshot.val().address
                 + "</h5><p>" + snapshot.val().desc + "</p><img class='mapImg' src='"
-                + snapshot.val().images + "'></div><br>";
+                + snapshot.val().image + "'></div><br>";
             if (snapshot.val().loctype === "Existing Graffiti") {
                 text += "<div class='opts'><div class='iw-avail green'>✔</div><div class='iw-opts'>   View Graffiti</div></div><div class='opts' style='border-top: 0;'><div class='iw-avail red'>✖</div><div class='iw-opts'>   Make Graffiti</div></div>";
             } else {
                 text += "<div class='opts'><div class='iw-avail green'>✔</div><div class='iw-opts'>   View Graffiti</div></div><div class='opts' style='border-top: 0;'><div class='iw-avail green'>✔</div><div class='iw-opts'>   Make Graffiti</div></div>";
             }
-
+            
             infowindow.setContent(text);
             infowindow.open(map, marker);
         });
@@ -130,8 +130,7 @@ window.addEventListener('load', function() {
 
 
 initApp = function() {
-    firebase.auth().onAuthStateChanged(function(user) {
-    })
+    firebase.auth().onAuthStateChanged(function(user) {})
 };
 
 
